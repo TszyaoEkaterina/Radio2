@@ -8,32 +8,36 @@ public class Radio {
         currentVolume = newCurrentVolume;
     }
     public void setCurrentChannel(int newCurrentChannel){
-        currentVolume = newCurrentChannel;
+        currentChannel = newCurrentChannel;
     }
-    public void increaseVolume() {
+    public int increaseVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
         }
+        return currentVolume;
     }
-    public void decreaseVolume() {
+    public int decreaseVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
+        return currentVolume;
     }
-    public void nextChannel() {
+    public int nextChannel() {
         if (currentChannel < 9) {
             currentChannel = currentChannel + 1;
         }
         if (currentChannel == 9) {
             currentChannel = 0;
         }
+        return currentChannel;
     }
-    public void prevChannel() {
+    public int prevChannel() {
         if (currentChannel > 0) {
             currentChannel = currentChannel - 1;
         }
         if (currentChannel == 0) {
             currentChannel = 9;
         }
+        return currentChannel;
     }
 }
