@@ -7,10 +7,9 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
-
+    Radio cond = new Radio();
     @Test
     public void increaseVolumeWithMinVolume() {
-        Radio cond = new Radio();
         cond.setCurrentVolume(0);
         int actual = cond.increaseVolume();
         int expected = 1;
@@ -18,16 +17,14 @@ public class RadioTest {
     }
     @Test
     public void increaseVolumeWithMaxVolume() {
-        Radio cond = new Radio();
-        cond.setCurrentVolume(10);
+        cond.setCurrentVolume(100);
         int actual = cond.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         assertEquals(expected, actual);
     }
 
     @Test
     void decreaseVolumeWithMinVolume() {
-        Radio cond = new Radio();
         cond.setCurrentVolume(0);
         int actual = cond.decreaseVolume();
         int expected = 0;
@@ -36,43 +33,52 @@ public class RadioTest {
 
     @Test
     void decreaseVolumeWithMaxVolume() {
-        Radio cond = new Radio();
-        cond.setCurrentVolume(10);
+        cond.setCurrentVolume(100);
         int actual = cond.decreaseVolume();
-        int expected = 9;
+        int expected = 99;
         assertEquals(expected, actual);
     }
 
     @Test
     void nextChannelWithFirstChannel() {
-        Radio cond = new Radio();
         cond.setCurrentChannel(0);
         int actual = cond.nextChannel();
         int expected = 1;
         assertEquals(expected, actual);
     }
     @Test
-    void nextChannelWithLastChannel() {
-        Radio cond = new Radio();
+    void nextChannelWithLastChannelWithUnchangedChannelNumber() {
         cond.setCurrentChannel(9);
         int actual = cond.nextChannel();
         int expected = 0;
         assertEquals(expected, actual);
     }
     @Test
-    void prevChannelWithFirstChannel() {
-        Radio cond = new Radio();
+    void prevChannelWithFirstChannelWithUnchangedChannelNumber() {
         cond.setCurrentChannel(0);
         int actual = cond.prevChannel();
         int expected = 9;
         assertEquals(expected, actual);
     }
     @Test
-    void prevChannelWithLastChannel() {
-        Radio cond = new Radio();
+    void prevChannelWithLastChannelWithUnchangedChannelNumber() {
         cond.setCurrentChannel(9);
         int actual = cond.prevChannel();
         int expected = 8;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void nextChannelWithLastChannelWithChangedChannelNumber() {
+        Radio cond = new Radio(19,20);
+        int actual = cond.nextChannel();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void prevChannelWithFirstChannelWithChangedChannelNumber() {
+        Radio cond = new Radio(0,20);
+        int actual = cond.prevChannel();
+        int expected = 19;
         assertEquals(expected, actual);
     }
 }

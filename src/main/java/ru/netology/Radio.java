@@ -3,15 +3,22 @@ package ru.netology;
 public class Radio {
     private int currentVolume;
     private int currentChannel;
+    private int channelNumber = 10;
 
-    public void setCurrentVolume(int newCurrentVolume){
-        currentVolume = newCurrentVolume;
+    public Radio() {}
+    public Radio(int currentChannel, int channelNumber) {
+        this.currentChannel = currentChannel;
+        this.channelNumber = channelNumber;
     }
-    public void setCurrentChannel(int newCurrentChannel){
-        currentChannel = newCurrentChannel;
+    public void setCurrentVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
     }
+    public void setCurrentChannel(int currentChannel) {
+        this.currentChannel = currentChannel;
+    }
+
     public int increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
         return currentVolume;
@@ -22,11 +29,12 @@ public class Radio {
         }
         return currentVolume;
     }
+
     public int nextChannel() {
-        if (currentChannel < 9) {
+        if (currentChannel < channelNumber - 1) {
             currentChannel = currentChannel + 1;
         }
-        if (currentChannel == 9) {
+        if (currentChannel == channelNumber - 1) {
             currentChannel = 0;
         }
         return currentChannel;
@@ -36,7 +44,7 @@ public class Radio {
             currentChannel = currentChannel - 1;
         }
         if (currentChannel == 0) {
-            currentChannel = 9;
+            currentChannel = channelNumber - 1;
         }
         return currentChannel;
     }
