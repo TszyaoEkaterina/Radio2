@@ -123,4 +123,18 @@ public class RadioTest {
         int expected = 17;
         assertEquals(expected, actual);
     }
+    @Test
+    void shouldSetChannelOnlyBetweenLimits() {
+        cond.setCurrentChannel(10);
+        int actual = cond.nextChannel();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldSetVolumeOnlyFrom0to100() {
+        cond.setCurrentVolume(101);
+        int actual = cond.increaseVolume();
+        int expected = 51;
+        assertEquals(expected, actual);
+    }
 }
