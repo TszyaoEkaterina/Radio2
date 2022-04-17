@@ -3,10 +3,6 @@ package ru.netology;
 public class Radio {
     private int currentVolume = 5;
     private int currentChannel = 0;
-
-    public int getCurrentVolume() {return currentVolume;}
-    public int getCurrentChannel() {return currentChannel;}
-
     public void setCurrentVolume(int newCurrentVolume){
         if (newCurrentVolume > 10 || newCurrentVolume < 0){
             return;
@@ -19,6 +15,7 @@ public class Radio {
         }
         currentChannel = newCurrentChannel;
     }
+
     public int increaseVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
