@@ -81,4 +81,46 @@ public class RadioTest {
         int expected = 19;
         assertEquals(expected, actual);
     }
+    @Test
+    void nextChannelWithSecondLastChannelWithUnchangedChannelNumber() {
+        cond.setCurrentChannel(8);
+        int actual = cond.nextChannel();
+        int expected = 9;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void prevChannelWithSecondChannelWithUnchangedChannelNumber() {
+        cond.setCurrentChannel(1);
+        int actual = cond.prevChannel();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void prevChannelWithSecondLastChannelWithUnchangedChannelNumber() {
+        cond.setCurrentChannel(8);
+        int actual = cond.prevChannel();
+        int expected = 7;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void nextChannelWithSecondLastChannelWithChangedChannelNumber() {
+        Radio cond = new Radio(18,20);
+        int actual = cond.nextChannel();
+        int expected = 19;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void prevChannelWitSecondChannelWithChangedChannelNumber() {
+        Radio cond = new Radio(1,20);
+        int actual = cond.prevChannel();
+        int expected = 0;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void prevChannelWithSecondLastChannelWithChangedChannelNumber() {
+        Radio cond = new Radio(18,20);
+        int actual = cond.prevChannel();
+        int expected = 17;
+        assertEquals(expected, actual);
+    }
 }
