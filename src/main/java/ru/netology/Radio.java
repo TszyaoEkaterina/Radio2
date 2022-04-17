@@ -1,20 +1,18 @@
 package ru.netology;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@Data
 public class Radio {
     private int currentVolume;
     private int currentChannel;
     private int channelNumber = 10;
 
-    public Radio() {}
     public Radio(int currentChannel, int channelNumber) {
         this.currentChannel = currentChannel;
         this.channelNumber = channelNumber;
-    }
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-    public void setCurrentChannel(int currentChannel) {
-        this.currentChannel = currentChannel;
     }
 
     public int increaseVolume() {
@@ -23,6 +21,7 @@ public class Radio {
         }
         return currentVolume;
     }
+
     public int decreaseVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
@@ -39,6 +38,7 @@ public class Radio {
         }
         return currentChannel;
     }
+
     public int prevChannel() {
         if (currentChannel > 0) {
             currentChannel = currentChannel - 1;

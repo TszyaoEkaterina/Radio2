@@ -20,6 +20,12 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.22</version>
+                <scope>provided</scope>
+            </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -58,9 +64,6 @@
                                 <rule>
                                     <limits>
                                         <limit>
-                                            <counter>LINE</counter>
-                                            <value>COVEREDRATIO</value>
-                                            <minimum>1.0</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
