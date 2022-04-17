@@ -96,4 +96,18 @@ public class RadioTest {
         int expected = 7;
         assertEquals(expected, actual);
     }
+    @Test
+    void shouldSetChannelOnlyFrom0to9() {
+        cond.setCurrentChannel(10);
+        int actual = cond.nextChannel();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldSetVolumeOnlyFrom0to10() {
+        cond.setCurrentVolume(11);
+        int actual = cond.increaseVolume();
+        int expected = 6;
+        assertEquals(expected, actual);
+    }
 }
