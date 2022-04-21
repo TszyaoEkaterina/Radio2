@@ -97,15 +97,29 @@ public class RadioTest {
         assertEquals(expected, actual);
     }
     @Test
-    void shouldSetChannelOnlyFrom0to9() {
+    void shouldSetChannelOnlyBelow9() {
         cond.setCurrentChannel(10);
         int actual = cond.nextChannel();
         int expected = 1;
         assertEquals(expected, actual);
     }
     @Test
-    void shouldSetVolumeOnlyFrom0to10() {
+    void shouldSetPositiveChannelOnly() {
+        cond.setCurrentChannel(-2);
+        int actual = cond.nextChannel();
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldSetVolumeOnlyBelow10() {
         cond.setCurrentVolume(11);
+        int actual = cond.increaseVolume();
+        int expected = 6;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldSetPositiveVolumeOnly() {
+        cond.setCurrentVolume(-2);
         int actual = cond.increaseVolume();
         int expected = 6;
         assertEquals(expected, actual);

@@ -32,7 +32,7 @@ public class Radio {
         if (currentChannel < 9) {
             currentChannel = currentChannel + 1;
         }
-        else if (currentChannel == 9) {
+        else {
             currentChannel = 0;
         }
         return currentChannel;
@@ -41,7 +41,7 @@ public class Radio {
         if (currentChannel > 0) {
             currentChannel = currentChannel - 1;
         }
-        else if (currentChannel == 0) {
+        else {
             currentChannel = 9;
         }
         return currentChannel;
